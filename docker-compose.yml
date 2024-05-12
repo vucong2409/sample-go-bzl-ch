@@ -1,0 +1,15 @@
+services:
+  backend:
+    profiles:
+      - "be"
+      - "fullstack"
+    build: .
+    ports:
+      - 8080:8080
+  clickhouse-db:
+    profiles:
+      - "db"
+      - "fullstack"
+    image: clickhouse/clickhouse-server:23.8-alpine
+    ports:
+      - 8123:8123
