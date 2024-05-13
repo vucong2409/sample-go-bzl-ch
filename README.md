@@ -12,7 +12,7 @@ This is a sample Golang repository with Bazel.
   - [x] Build binary with `rules_go`
   - [x] Generate rules with `Gazelle`
   - [ ] Build OCI image with `rule_oci`
-  - [ ] Convert to Bzlmod
+  - [x] Convert to Bzlmod
 - [x] Development environment:
   - [x] Local docker compose
   - [x] Makefile
@@ -28,3 +28,10 @@ This is a sample Golang repository with Bazel.
 | run-binary              | Run `sample-go-bzl-ch` binary. Arg for binary can be passed by set `app-arg` param |
 | run-fullstack-in-docker | Run both binary & Clickhouse DB                                                    |
 | generate-rule           | Generate Bazel rule using Gazelle                                                  |
+
+## Notes
+- To allow Bazel pull private dependency, add to .gitconfig an `insteadOf` block: 
+```bash
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
+```

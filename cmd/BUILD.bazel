@@ -12,6 +12,7 @@ go_library(
     deps = [
         "//router",
         "@com_github_spf13_cobra//:cobra",
+        "@com_github_vucong2409_sample_private_go_mod//:sample-private-go-mod",
     ],
 )
 
