@@ -4,6 +4,9 @@ test-all:
 build-binary:
 	bazel build //:sample-go-bzl-ch
 
+run-binary:
+	bazel run //:sample-go-bzl-ch -- $(app-arg)
+
 build-oci-image:
 	bazel build //:oci_image
 

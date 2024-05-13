@@ -5,8 +5,12 @@ go_library(
     srcs = [
         "main.go",
         "pong.go",
+        "server.go",
     ],
     importpath = "github.com/vucong2409/sample-go-bzl-ch/cmd",
     visibility = ["//visibility:public"],
-    deps = ["@com_github_spf13_cobra//:cobra"],
+    deps = [
+        "//router",
+        "@com_github_spf13_cobra//:cobra",
+    ],
 )
