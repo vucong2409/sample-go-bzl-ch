@@ -1,5 +1,5 @@
 test-all:
-	bazel test //:test
+	bazel test //...
 
 build-binary:
 	bazel build //:sample-go-bzl-ch
