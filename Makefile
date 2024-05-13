@@ -21,7 +21,6 @@ run-fullstack-in-docker:
 
 generate-rule:
 	bazel run //:gazelle
-	bazel run //:gazelle_update_repos
 
 clean:
 	echo "Don't try to clean everywhere u psycho!"
