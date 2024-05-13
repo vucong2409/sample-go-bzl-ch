@@ -10,6 +10,7 @@ This is a sample Golang repository with Bazel:
   - [ ] Build binary with `rules_go`
   - [ ] Generate rules with `Gazelle`
   - [ ] Build OCI image with `rule_oci`
+  - [ ] Convert to Bzlmod
 - [ ] Development environment:
   - [ ] Local docker compose
   - [ ] Makefile

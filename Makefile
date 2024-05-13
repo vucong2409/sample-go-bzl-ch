@@ -2,7 +2,7 @@ test-all:
 	bazel test //:test
 
 build-binary:
-	bazel build //:project
+	bazel build //:sample-go-bzl-ch
 
 build-oci-image:
 	bazel build //:oci_image

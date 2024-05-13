@@ -1,7 +1,7 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 load("@bazel_gazelle//:def.bzl", "gazelle")
 
-# gazelle:prefix github.com/example/project
+# gazelle:prefix github.com/vucong2409/sample-go-bzl-ch
 gazelle(
     name = "gazelle",
 )
@@ -19,15 +19,15 @@ gazelle(
 )
 
 go_library(
-    name = "project_lib",
+    name = "sample-go-bzl-ch_lib",
     srcs = ["main.go"],
-    importpath = "github.com/example/project",
+    importpath = "github.com/vucong2409/sample-go-bzl-ch",
     visibility = ["//visibility:private"],
-    deps = ["@com_github_vucong2409_sample_go_bzl_ch//cmd:go_default_library"],
+    deps = ["//cmd"],
 )
 
 go_binary(
-    name = "project",
-    embed = [":project_lib"],
+    name = "sample-go-bzl-ch",
+    embed = [":sample-go-bzl-ch_lib"],
     visibility = ["//visibility:public"],
 )
