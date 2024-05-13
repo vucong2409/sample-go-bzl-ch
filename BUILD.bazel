@@ -1,5 +1,7 @@
 load("@gazelle//:def.bzl", "gazelle")
 load("@rules_go//go:def.bzl", "go_binary", "go_library")
+load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_tarball")
 
 # gazelle:prefix github.com/vucong2409/sample-go-bzl-ch
 gazelle(
@@ -18,4 +20,22 @@ go_binary(
     name = "sample-go-bzl-ch",
     embed = [":sample-go-bzl-ch_lib"],
     visibility = ["//visibility:public"],
+)
+
+pkg_tar(
+  name = "tar",
+  srcs = [":sample-go-bzl-ch"]
+)
+
+oci_image(
+  name = "oci-img",
+  base = "@distroless_base",
+  tars = [":tar"],
+  entrypoint = ["/sample-go-bzl-ch"]
+)
+
+oci_tarball(
+  name = "oci-img-tarball",
+  image = ":oci-img",
+  repo_tags = ["sample-go-bzl-ch:latest"]
 )

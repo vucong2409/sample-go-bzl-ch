@@ -11,7 +11,7 @@ This is a sample Golang repository with Bazel.
 - [ ] Bazel:
   - [x] Build binary with `rules_go`
   - [x] Generate rules with `Gazelle`
-  - [ ] Build OCI image with `rule_oci`
+  - [x] Build OCI image with `rule_oci`
   - [x] Convert to Bzlmod
 - [x] Development environment:
   - [x] Local docker compose
@@ -21,13 +21,15 @@ This is a sample Golang repository with Bazel.
 
 ## Make command
 
-| Name                    | Desc                                                                               |
-| ----------------------- | ---------------------------------------------------------------------------------- |
-| test-all                | Run all tests in all modules                                                       |
-| build-binary            | Build `sample-go-bzl-ch` binary                                                    |
-| run-binary              | Run `sample-go-bzl-ch` binary. Arg for binary can be passed by set `app-arg` param |
-| run-fullstack-in-docker | Run both binary & Clickhouse DB                                                    |
-| generate-rule           | Generate Bazel rule using Gazelle                                                  |
+| Name                     | Desc                                                                               |
+| ------------------------ | ---------------------------------------------------------------------------------- |
+| test-all                 | Run all tests in all modules                                                       |
+| build-binary             | Build `sample-go-bzl-ch` binary                                                    |
+| build-and-load-oci-image | Build `sample-go-bzl-ch` image and load into docker with `latest` tag              |
+| run-binary               | Run `sample-go-bzl-ch` binary. Arg for binary can be passed by set `app-arg` param |
+| run-app-in-docker        | Run `sample-go-bzl-ch` binary inside docker container                              |
+| run-fullstack-in-docker  | Run both binary & Clickhouse DB                                                    |
+| generate-rule            | Generate Bazel rule using Gazelle                                                  |
 
 ## Notes
 - To allow Bazel pull private dependency, add to .gitconfig an `insteadOf` block: 

@@ -1,5 +1,8 @@
-# Build the application from source
+# This Dockerfile is for references only.
+# To build Docker image, please use corresponding Bazel rule.
 FROM golang:1.21 AS build-stage
+
+ENV GOPRIVATE "github.com/vucong2409/sample-private-go-mod"
 
 WORKDIR /app
 

@@ -7,17 +7,17 @@ build-binary:
 run-binary:
 	bazel run //:sample-go-bzl-ch -- $(app-arg)
 
-build-oci-image:
-	bazel build //:oci_image
-
-build-docker-image:
-	docker build -t sample-go-bzl-ch:$(img_version) .
+build-and-load-oci-image:
+	bazel build //:oci-img-tarball
+	docker load --input $$(bazel cquery --output=files :oci-img-tarball)
 
 run-app-in-docker:
-	docker compose --profiles be up -d
+	make build-and-load-oci-image
+	docker compose --profile be up -d
 
 run-fullstack-in-docker:
-	docker compose --profiles fullstack up -d
+	make build-and-load-oci-image
+	docker compose --profile fullstack up -d
 
 generate-rule:
 	bazel run //:gazelle

@@ -4,6 +4,8 @@ module(name = "sample_go_bzl_ch")
 # Add Bazel dependencies
 bazel_dep(name = "rules_go", version = "0.47.1")
 bazel_dep(name = "gazelle", version = "0.31.0")
+bazel_dep(name = "rules_oci", version = "1.7.5")
+bazel_dep(name = "rules_pkg", version = "0.10.1")
 
 # Override gazelle deps with un-released version, which had Go Workspace native support.
 git_override(
@@ -15,6 +17,7 @@ git_override(
 # Import extension
 go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk")
 go_deps = use_extension("@gazelle//:extensions.bzl", "go_deps")
+oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
 
 # Pin Go SDK version
 go_sdk.download(version = "1.22.3")
@@ -29,9 +32,18 @@ use_repo(
   "com_github_vucong2409_sample_private_go_mod"
 )
 
-# Setup private repo
+# Setup private Golang dependencies
 go_deps.config(
   go_env = {
     "GOPRIVATE": "github.com/vucong2409/sample-private-go-mod"
   }
 )
+
+# Register base image
+oci.pull(
+    name = "distroless_base",
+    digest = "sha256:1f957e6333e5df53de1b470837789ffa8c6e4c375ffbd5caddd40b22a226b68d",
+    image = "gcr.io/distroless/base-debian12",
+    platforms = ["linux/amd64"],
+)
+use_repo(oci, "distroless_base")

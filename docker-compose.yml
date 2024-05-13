@@ -3,7 +3,7 @@ services:
     profiles:
       - "be"
       - "fullstack"
-    build: .
+    image: sample-go-bzl-ch:latest
     ports:
       - 8080:8080
   clickhouse-db:
